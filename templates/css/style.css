@@ -1,0 +1,27 @@
+/* body {
+  background: url(../img/bg.jpg);
+} */
+
+.regis {
+  color: rgb(0, 0, 0);
+  display: flex;
+  justify-content: center; /* Căn giữa ngang */
+}
+.regis a {
+  text-decoration: none; /* Loại bỏ gạch chân */
+  color: rgb(0, 0, 0);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.regis button {
+  width: 100%;
+}
+
+.regis2 button {
+  width: 24.2%;
+}
+.error {
+  color: red;
+  font-style: italic;
+}

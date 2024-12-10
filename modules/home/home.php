@@ -17,7 +17,7 @@ home("head", $data);
             <div class="col-md-12">
 
                 <div class="account-card pt-3">
-                    <p style="text-align:center"><span style="color:#16a085"><span
+                    <!-- <p style="text-align:center"><span style="color:#16a085"><span
                                 style="font-size:16px"><strong>&diams;VTGaming&diams;️</strong></span></span>
                     </p>
 
@@ -40,7 +40,7 @@ home("head", $data);
 
                     <p style="text-align:center"><span style="color:#16a085"><u><strong>Đăng K&yacute; Hội
                                     Vi&ecirc;n Vip IB m&igrave;nh nh&eacute;,Vip Th&aacute;ng Hoặc Vip Vĩnh
-                                    Viễn</strong></u></span></p>
+                                    Viễn</strong></u></span></p> -->
 
                     <ul>
                     </ul>
@@ -54,7 +54,7 @@ home("head", $data);
                         <div class="home-heading mb-3">
                             <h3>
                                 <img src="https://i.imgur.com/5OtiwkV.png">
-                                Tổng Hợp Game (Bấm Vào Menu Game Để Xem Nhiều Hơn)
+                                Tổng Hợp SẢN PHẨM (Bấm Vào Menu Để Xem Nhiều Hơn)
                             </h3>
                         </div>
 
@@ -356,7 +356,7 @@ if (count($products) > 0) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <p style="text-align:center"><span style="color:#16a085"><span
+                <!-- <p style="text-align:center"><span style="color:#16a085"><span
                             style="font-size:16px"><strong>&diams;️VT Gaming&diams;️</strong></span></span></p>
 
                 <p style="text-align:center"><strong><span style="color:#ff0000">WEBSITE CHUY&Ecirc;N CUNG CẤP GAME
@@ -380,7 +380,7 @@ if (count($products) > 0) {
                                 Vip IB m&igrave;nh nh&eacute;,Vip Th&aacute;ng Hoặc Vip Vĩnh
                                 Viễn</strong></u></span></p>
 
-                <ul>
+                <ul> -->
                 </ul>
                 <ul>
                 </ul>

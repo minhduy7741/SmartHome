@@ -21,9 +21,7 @@ if (!defined("_STATUS")) {
                 <div class="footer-widget">
                     <a class="footer-logo" href="">
                         <img src=<?php _WEBDIR?>"/templates/img/icon.jpg"></a>
-                    <p class="footer-desc">
-                        Mua Bán trao đổi source game đa thể loại,giá rẻ chất lượng
-                    </p>
+                    
 
                     <div class="time-web">
                         <p id="time" class="footer-desc">

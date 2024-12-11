@@ -527,7 +527,7 @@ gtag('config', 'G-LDH37NXHVP');
             <div class="row">
                 <div class="col-md-12 col-lg-5">
                     <div class="header-top-welcome">
-                        <p>Chào mừng bạn đến với VTGaming</p>
+                        <p>Chào mừng bạn đến với Smart Home</p>
                     </div>
                 </div>
                 <div class="col-md-5 col-lg-3">
@@ -605,7 +605,7 @@ gtag('config', 'G-LDH37NXHVP');
                             <li class="navbar-item"><a class="navbar-link" href="/">Trang chủ</a>
                             </li>
                             <li class="navbar-item dropdown-megamenu">
-                                <a class="navbar-link" href="#">Menu Game</a>
+                                <a class="navbar-link" href="#">Menu</a>
                                 <div class="megamenu">
 
                                     <div class="container">
@@ -664,7 +664,7 @@ gtag('config', 'G-LDH37NXHVP');
                                 <a class="navbar-link" href="#">Lịch sử</a>
 
                                 <ul class="dropdown-position-list">
-                                    <li><a href="?modules=sanpham&action=product">Quản lý mã nguồn</a>
+                                    <li><a href="?modules=sanpham&action=product">Quản lý sản phẩm</a>
                                     </li>
                                 </ul>
                             </li>

@@ -155,7 +155,7 @@ if($_GET['id']){
                                         class="fa-solid fa-cart-shopping"></i> MUA NGAY</button>
                             </div>
                             <div class="col-lg-6">
-                                <a class="btn-more" href="https://youtu.be/uAxNq-pNoz4?si=CQ_4l0TDBn4v8e8F"
+                                <a class="btn-more" href="https://youtu.be/sYqjs8TKkOE"
                                     type="button">
                                     <span>XEM DEMO</span>
                                 </a>

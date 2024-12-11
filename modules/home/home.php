@@ -272,7 +272,7 @@ if ($total_pages > 1) {
             <div class="row">
                 <div class="col-lg-6 mb-3">
                     <div class="home-heading mb-3">
-                        <h3><i class="fa-solid fa-cart-shopping m-2"></i> MUA MÃ NGUỒN GẦN ĐÂY</h3>
+                        <h3><i class="fa-solid fa-cart-shopping m-2"></i> MUA SẢN PHẨM GẦN ĐÂY</h3>
                     </div>
                     <div style="height:350px;overflow-x:hidden;overflow-y:auto;">
                         <?php 
@@ -294,8 +294,8 @@ if (count($products) > 0) {
                                 <div class="row">
                                     <div class="col-10 col-md-10">
                                         <b style="color: green;"><?php echo $row['email']; ?></b> mua thành công <b
-                                            style="color: red;">MÃ
-                                            NGUỒN</b> <b><?php echo $row['name']; ?></b> với giá <b
+                                            style="color: red;">SẢN PHẨM
+                                            </b> <b><?php echo $row['name']; ?></b> với giá <b
                                             style="color:blue;"><?php echo $row['gia']; ?>VNĐ</b>
                                     </div>
                                     <div class="col-2 col-md-2">

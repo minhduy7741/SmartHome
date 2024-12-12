@@ -4,7 +4,7 @@ if (!defined("_STATUS")) {
     die();
 }
 $data = [
-    "title"=> "Vietcod - kho source"
+    "title"=> "Sản phẩm"
 ];
 home("head", $data);
 if(empty($_user)){
@@ -13,7 +13,7 @@ if(empty($_user)){
 $noidung = 'NAP'.$_id;
 $bank = 'BIDVBANK';
 $stk = '1170191092';
-$tentk = 'NGUYEN VAN TUAN';
+$tentk = 'NGUYEN VAN TEO';
 $sotien = 0;
 ?>
 <section class="py-5 inner-section profile-part">

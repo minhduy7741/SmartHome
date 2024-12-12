@@ -4,7 +4,7 @@ if (!defined("_STATUS")) {
     die();
 }
 $data = [
-    "title"=> "VTGaming - Kho Source"
+    "title"=> "ShopSmartHome"
 ];
 home("head", $data);
 ?>

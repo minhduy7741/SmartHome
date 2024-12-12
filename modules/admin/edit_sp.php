@@ -170,7 +170,7 @@ $ms_type = getFlashdata('tb_type');
                     <div class="mb-3">
                         <label class="form-label">Thể loại: </label>
                         <input name="the_loai" type="text" class="form-control"
-                            placeholder="Điền toolweb, china, thuong"
+                            placeholder="Điền loại sản phẩm"
                             value="<?php echo !empty($the_loai) ? htmlspecialchars($the_loai) : ''; ?>" required>
                     </div>
                 </div>

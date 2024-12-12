@@ -4,7 +4,7 @@ if (!defined("_STATUS")) {
     die();
 }
 $data = [
-    "title"=> "Vietcod - kho source"
+    "title"=> "Sản phẩm"
 ];
 home("head", $data);
 if($_GET['id']){

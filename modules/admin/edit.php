@@ -54,50 +54,43 @@ if (isset($_GET['id'])) {
             }
         
             if (empty($msg)) {
-               
-        
                 // Dữ liệu để cập nhật
                 $updateData = [
                     'email' => $email,
-                    'status' => $status,
-                    'update_time' => date("Y-m-d H:i:s")
+                    'status' => $status
                 ];
+                
                 if(!empty($pass) || !empty($repass)){
                     $updateData['pass'] = password_hash($pass, PASSWORD_DEFAULT);
                 }
-                // Tạo câu lệnh SET
+
+                // Tạo câu lệnh SET và mảng params
                 $setClause = [];
+                $params = [];
                 foreach ($updateData as $key => $value) {
-                    $setClause[] = "$key = ?";
+                    $setClause[] = "$key = :$key";
+                    $params[":$key"] = $value;
                 }
                 $setClauseString = implode(', ', $setClause);
                 
-                // Tạo câu lệnh SQL
-                $sql = "UPDATE account SET $setClauseString WHERE id = ?";
+                // Thêm ID vào params
+                $params[':id'] = $id_get;
                 
-                // Chuẩn bị câu lệnh SQL
-                $stmt = $conn->prepare($sql);
-                
-                if ($stmt === false) {
-                    // Xử lý lỗi khi chuẩn bị câu lệnh
-                    die("Lỗi khi chuẩn bị câu lệnh SQL: " . mysqli_error($conn));
-                }
-                
-                // Gán giá trị cho các tham số
-                $params = array_values($updateData);
-                $params[] = $id_get;
-                
-                // Gán kiểu dữ liệu cho tham số
-                $types = str_repeat('s', count($updateData)) . 'i'; // 'i' cho ID số nguyên
-                $stmt->bind_param($types, ...$params);
-                
-                // Thực thi câu lệnh
-                $suc = $stmt->execute();
-                if ($suc) {
-                    setFlashdata('tb', 'Sửa khoản thành công!');
-                    setFlashdata('tb_type', 'success');
-                } else {
-                    setFlashdata('tb', 'Có lỗi xảy ra!');
+                // Tạo và thực thi câu lệnh SQL với PDO
+                try {
+                    $sql = "UPDATE account SET $setClauseString WHERE id = :id";
+                    $stmt = $conn->prepare($sql);
+                    $suc = $stmt->execute($params);
+                    
+                    if ($suc) {
+                        setFlashdata('tb', 'Sửa tài khoản thành công!');
+                        setFlashdata('tb_type', 'success');
+                    } else {
+                        setFlashdata('tb', 'Có lỗi xảy ra!');
+                        setFlashdata('tb_type', 'danger');
+                    }
+                } catch(PDOException $e) {
+                    setFlashdata('tb', 'Có lỗi xảy ra: ' . $e->getMessage());
                     setFlashdata('tb_type', 'danger');
                 }
             } else {

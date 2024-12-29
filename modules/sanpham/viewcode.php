@@ -139,6 +139,13 @@ if($_GET['id']){
                             </div>
 
                             <label class="form-label">Thao Tác</label>
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <a class="btn-more" href="https://youtu.be/sYqjs8TKkOE" type="button">
+                                        <span>XEM DEMO</span>
+                                    </a>
+                                </div>
+                            </div><br><br>
                             <div class="input-group mb-3">
                                 <input type="text" class="form-control" placeholder="Nhập voucher (nếu có)" id="coupon"
                                     onchange="totalPayment()" onkeyup="totalPayment()">
@@ -151,16 +158,16 @@ if($_GET['id']){
 
                         <div class="row">
                             <div class="col-lg-6">
-                                <button onclick="PaymentVps(<?php echo $view_code['id']; ?>)" class="btn-buy mb-2"><i
-                                        class="fa-solid fa-cart-shopping"></i> MUA NGAY</button>
+                               <button onclick="PaymentVps(<?php echo $view_code['id']; ?>, '<?php echo htmlspecialchars($_email, ENT_QUOTES, 'UTF-8'); ?>')" class="btn-buy mb-2">
+    <i class="fa-solid fa-cart-shopping"></i> Thanh toán
+</button>
                             </div>
                             <div class="col-lg-6">
-                                <a class="btn-more" href="https://youtu.be/sYqjs8TKkOE"
-                                    type="button">
-                                    <span>XEM DEMO</span>
-                                </a>
+                                <button onclick="PaymentCart(<?php echo $view_code['id']; ?>)" class="btn-buy mb-2"><i
+                                        class="fa-solid fa-cart-shopping"></i> Thêm vào giỏ hàng</button>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -212,7 +219,16 @@ if($_GET['id']){
 
             <div class="tab-pane fade" id="tab-14">
                 <div class="account-card pt-3">
-                    <div class="image-container mb-2">
+                    <style>
+                        .image-container img{
+                            width: 400px;
+                            height: 400px;
+                        }
+
+                    </style>
+
+
+                    <div class="image-container mb-2" >
                         <?php echo $view_code['img']; ?>
                     </div>
 
@@ -233,8 +249,7 @@ function showModal() {
     $('#exampleModal').modal('show');
 }
 
-function PaymentVps(id) {
-
+function PaymentCart(id) {
     Swal.fire({
         title: 'Xác Nhận Thanh Toán!',
         text: "Bạn có chắc chắn muốn mua loại này không!",
@@ -248,6 +263,62 @@ function PaymentVps(id) {
         cancelButtonText: "Không",
     }).then((result) => {
         if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Đang xử lý',
+                text: 'Vui lòng đợi trong giây lát',
+                imageUrl: 'https://414jgaming.com/assets/img/loading.gif',
+                imageWidth: 400,
+                imageHeight: 200,
+                imageAlt: 'Custom image',
+            });
+
+            // Gọi hàm addToCart để xử lý thêm sản phẩm vào giỏ hàng
+            addToCart(id);
+        }
+    });
+}
+
+function addToCart(id) {
+    $.get('?modules=cart&action=add', {
+        kieu: 'add',
+        id: id,
+        coupon: $("#coupon").val(),
+        note: $("#note").val(),
+    }, function(data) {
+        if (data.status === 'success') {
+            Swal.fire({
+                icon: 'success',
+                title: 'Thành công',
+                text: data.msg,
+            });
+        } else {
+            Swal.fire({
+                icon: 'error',
+                title: 'Có lỗi',
+                text: data.msg,
+            });
+        }
+    }, 'json');
+}
+
+
+
+function PaymentVps(id, email) {
+    Swal.fire({
+        title: 'Xác Nhận Thanh Toán!',
+        text: "Bạn có chắc chắn muốn mua loại này không!",
+        icon: 'warning',
+        showCancelButton: true,
+        //showDenyButton: true, // Thêm nút "Deny"
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        denyButtonColor: '#f6c23e',
+        confirmButtonText: 'Thanh Toán',
+        cancelButtonText: 'Hủy',
+        // denyButtonText: 'Thanh toán tiền mặt',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            // Người dùng chọn "Thanh toán online"
             Swal.fire({
                 title: 'Đang xử lý',
                 text: 'Vui lòng đợi trong giây lát',
@@ -272,7 +343,7 @@ function PaymentVps(id) {
                     });
                     setTimeout(() => {
                         location.href = '?modules=sanpham&action=product';
-                    }, 2000);
+                    }, 1000);
                 } else {
                     Swal.fire({
                         icon: 'error',
@@ -281,9 +352,13 @@ function PaymentVps(id) {
                     });
                 }
             }, 'json');
-        }
+         } //else if (result.isDenied) {
+        //     // Người dùng chọn "Thanh toán tiền mặt"
+        //     window.location.href = `?modules=sanpham&action=checkout&id_source=${id}&email=${encodeURIComponent(email)}`;
+        // }
     });
 }
+
 
 function totalPayment() {
     $('#total').html('<i class="fa fa-spinner fa-spin"></i> Đang xử lý...');
@@ -307,9 +382,7 @@ function totalPayment() {
 }
 </script>
 
-
-
-
+<!-- Modal sản phẩm -->
 <div class="modal fade" id="openModal" tabindex="-1" aria-labelledby="modal-block-popout" role="dialog"
     aria-hidden="true">
     <div class="modal-dialog modal-lg modal-dialog-popout" role="document">
@@ -323,9 +396,8 @@ function totalPayment() {
 function openModal(token, id) {
     $("#modalContent").html('');
     var originalButtonContent = $('#openModal_' + id).html();
-    $('#openModal_' + id).html('<span><i class="fa fa-spinner fa-spin"></i> Processing...</span>')
-        .prop('disabled',
-            true);
+    $('#openModal_' + id).html('<span><i class="fa fa-spinner fa-spin"></i> Processing...</span>').prop('disabled',
+        true);
     $.ajax({
         url: "ajaxs/client/modal/view-product.php",
         method: "GET",

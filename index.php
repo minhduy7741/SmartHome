@@ -17,13 +17,28 @@ if(!empty($_GET['action'])){
     $action = $_GET['action'];
 }
 
-$path = _WEBDIR."/modules/$modules/$action.php";
-
-if(file_exists($path)){
-    try {
-        include $path;
-    } catch (Exception $e) {
-        include "404.php";
+// Thêm route cho cart
+if($modules == 'cart') {
+    switch($action) {
+        case 'add':
+            require_once 'modules/cart/add.php';
+            break;
+        case 'cart':
+            require_once 'modules/cart/cart.php';
+            break;
+        default:
+            require_once 'modules/cart/cart.php';
+            break;
     }
-} 
+} else {
+    $path = _WEBDIR."/modules/$modules/$action.php";
+    if(file_exists($path)){
+        try {
+            include $path;
+        } catch (Exception $e) {
+            include "404.php";
+        }
+    }
+}
 ?>
+<!-- NguyenMinhDuy_NguyenVanTuan -->

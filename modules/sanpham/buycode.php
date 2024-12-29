@@ -38,13 +38,14 @@ if ($action === 'buy') {
                 $stmt_update_balance->execute(['vnd' => $new_balance, 'email' => $_email]);
 
                 // Thêm lịch sử đơn hàng
-                $stmt_insert = $conn->prepare("INSERT INTO lichsudonhang (name, link, gia, time_mua, email) VALUES (:name, :link, :gia, :time_mua, :email)");
+                $stmt_insert = $conn->prepare("INSERT INTO lichsudonhang (name, link, gia, time_mua, email, id_source) VALUES (:name, :link, :gia, :time_mua, :email, :id_source)");
                 $stmt_insert->execute([
                     'name' => $name,
                     'link' => $link,
                     'gia' => $gia,
                     'time_mua' => $time_mua,
                     'email' => $_email,
+                    'id_source' => $id,
                 ]);
 
                 echo json_encode(['status' => 'success', 'msg' => 'Mua sản phẩm thành công!']);

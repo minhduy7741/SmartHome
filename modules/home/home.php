@@ -8,6 +8,45 @@ $data = [
 ];
 home("head", $data);
 ?>
+
+
+    <style>
+    .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 20px 0;
+    padding: 10px;
+    list-style-type: none;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #007bff;
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination a:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: #fff;
+    border-color: #007bff;
+    font-weight: bold;
+}
+
+    
+    </style>
 <section class="section feature-part">
     <div class="container">
         <div class="mb-5">
@@ -132,9 +171,10 @@ if (count($products) > 0) {
                                                     class="btn-more"><span><?= htmlspecialchars(number_format($row['gia'], 0, ',', '.'), ENT_QUOTES, 'UTF-8'); ?>
                                                         đ</span></a>
                                             </div>
+
                                             <div class="col">
                                                 <button onclick="redirectToDetailPage(<?php echo $row['id']; ?>)"
-                                                    class="btn-buy">Mua
+                                                    class="btn-buy">Xem
                                                     Ngay</button>
                                             </div>
                                         </div>
@@ -200,6 +240,31 @@ if ($total_pages > 1) {
                             text-decoration: none;
                             transition: all 0.3s ease;
                         }
+
+                        .btn-cart {
+                            padding: 8px 12px;
+                            background: #28a745;
+                            color: #fff;
+                            border: none;
+                            border-radius: 5px;
+                            cursor: pointer;
+                            transition: all 0.3s ease;
+                            height: 35px;
+                            width: 35px;
+                            display: inline-flex;
+                            align-items: center;
+                            justify-content: center;
+                        }
+
+                        .btn-cart i {
+                            font-size: 14px;
+                            color: #fff;
+                        }
+
+                        .btn-cart:hover {
+                            background: #218838;
+                            transform: translateY(-2px);
+                        }
                         </style>
 
                         <!--<center>-->
@@ -218,6 +283,7 @@ if ($total_pages > 1) {
                             window.location.href = url;
                         }
                         </script>
+
 
                     </div>
 
@@ -295,7 +361,7 @@ if (count($products) > 0) {
                                     <div class="col-10 col-md-10">
                                         <b style="color: green;"><?php echo $row['email']; ?></b> mua thành công <b
                                             style="color: red;">SẢN PHẨM
-                                            </b> <b><?php echo $row['name']; ?></b> với giá <b
+                                        </b> <b><?php echo $row['name']; ?></b> với giá <b
                                             style="color:blue;"><?php echo $row['gia']; ?>VNĐ</b>
                                     </div>
                                     <div class="col-2 col-md-2">
@@ -356,13 +422,13 @@ if (count($products) > 0) {
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <!-- <p style="text-align:center"><span style="color:#16a085"><span
-                            style="font-size:16px"><strong>&diams;️VT Gaming&diams;️</strong></span></span></p>
+                <p style="text-align:center"><span style="color:#16a085"><span
+                            style="font-size:16px"><strong>&diams;️SHOP SMART HOME&diams;️</strong></span></span></p>
 
-                <p style="text-align:center"><strong><span style="color:#ff0000">WEBSITE CHUY&Ecirc;N CUNG CẤP GAME
-                            FREE V&Agrave;&nbsp;GI&Aacute; RẺ UY T&Iacute;N CHẤT LƯỢNG</span></strong></p>
+                <p style="text-align:center"><strong><span style="color:#ff0000">WEBSITE CHUY&Ecirc;N CUNG CẤP CODE
+                             V&Agrave;&nbsp;GI&Aacute; RẺ UY T&Iacute;N CHẤT LƯỢNG</span></strong></p>
 
-                <p style="text-align:center"><span style="color:#8e44ad"><strong><img alt="yes"
+                <!-- <p style="text-align:center"><span style="color:#8e44ad"><strong><img alt="yes"
                                 src="https://414jgaming.com/public/admin/template/ckeditor/plugins/smiley/images/thumbs_up.png"
                                 style="height:23px; width:23px" title="yes" />HỌC L&Agrave;M
                             GAME:&nbsp;https://zalo.me/g/vdpfln805</strong></span></p>
@@ -370,17 +436,17 @@ if (count($products) > 0) {
                 <p style="text-align:center"><span style="color:#f1c40f"><strong><img alt="devil"
                                 src="https://414jgaming.com/public/admin/template/ckeditor/plugins/smiley/images/devil_smile.png"
                                 style="height:23px; width:23px" title="devil" />ĐỘNG GAME
-                            FREE:&nbsp;</strong><strong>https://zalo.me/g/vdpfln805</strong></span></p>
+                            FREE:&nbsp;</strong><strong>https://zalo.me/g/vdpfln805</strong></span></p> -->
 
                 <p style="text-align:center"><span style="color:#e67e22"><u><strong>AE BẤM V&Agrave;O &quot;MENU
-                                GAME&quot; RỒI CHỌN CODE FREE HOẶC CODE C&Oacute; PH&Iacute; ĐỂ&nbsp;XEM FULL HẾT
-                                C&Aacute;C GAME NH&Eacute;!!</strong></u></span></p>
+                                &quot; RỒI CHỌN CODE FREE HOẶC CODE C&Oacute; PH&Iacute; ĐỂ&nbsp;XEM FULL HẾT
+                                C&Aacute;C CODE NH&Eacute;!!</strong></u></span></p>
 
                 <p style="text-align:center"><span style="color:#16a085"><u><strong>Đăng K&yacute; Hội Vi&ecirc;n
                                 Vip IB m&igrave;nh nh&eacute;,Vip Th&aacute;ng Hoặc Vip Vĩnh
                                 Viễn</strong></u></span></p>
 
-                <ul> -->
+                <ul>
                 </ul>
                 <ul>
                 </ul>
@@ -424,42 +490,11 @@ document.addEventListener("DOMContentLoaded", function() {
     </div>
 </div>
 
-<script>
-function openModal(token, id) {
-    $("#modalContent").html('');
-    var originalButtonContent = $('#openModal_' + id).html();
-    $('#openModal_' + id).html('<span><i class="fa fa-spinner fa-spin"></i> Processing...</span>')
-        .prop('disabled',
-            true);
-    $.ajax({
-        url: "ajaxs/client/modal/view-product.php",
-        method: "GET",
-        data: {
-            id: id,
-            token: token
-        },
-        success: function(data) {
-            $("#modalContent").html(data);
-            $('#openModal').modal('show');
-            $('#openModal_' + id).html(originalButtonContent).prop('disabled', false);
-        },
-        error: function() {
-            Swal.fire('Thất bại!', data, 'error');
-        }
-    });
-}
-</script>
 
 
-
-<script>
-// JavaScript để ẩn/hiện menu khi click vào nút
-const toggleMenuButton = document.getElementById('toggle-menu-button');
-const topMenu = document.getElementById('top-menu');
-toggleMenuButton.addEventListener('click', function() {
-    topMenu.classList.toggle('hidden');
-});
-</script>
+<!-- Thêm SweetAlert2 và jQuery -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <?php
 home("foot");

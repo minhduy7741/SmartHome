@@ -34,8 +34,6 @@ $title = !empty($data['title']) ? $data['title'] : 'Vietcod';
     <link rel="stylesheet" href=<?php _WEBDIR?>"/templates/css/style.css">
     <link rel="icon" type="image/png" href=<?php _WEBDIR?>"/templates/img/icon.jpg">
 
-
-
     <style>
     :root {
         --primary: #000000;
@@ -573,7 +571,9 @@ gtag('config', 'G-LDH37NXHVP');
                             class="fas fa-search"></i></button>
                 </form>
                 <div class="header-widget-group">
-                    <a href="#" class="header-widget" title="Đơn hàng"><i class="fa-solid fa-cart-arrow-down"></i>
+                    <a href="?modules=cart&action=cart" class="header-widget" title="Giỏ hàng">
+                        <i class="fa-solid fa-cart-arrow-down"></i>
+                        <sup id="cartCount"><?php echo isset($_SESSION['cart']) ? count($_SESSION['cart']) : 0; ?></sup>
                     </a>
                     <a href="#" class="header-widget" title="Sản phẩm yêu thích">
                         <i class="fas fa-heart"></i>

@@ -4,7 +4,7 @@ if (!defined("_STATUS")) {
     die();
 }
 $data = [
-    "title"=> "Sản phẩm"
+    "title"=> "Vietcod - kho source"
 ];
 home("head", $data);
 ?>
@@ -148,11 +148,11 @@ if (count($products) > 0) {
                                             <span class="badge bg-primary"><?php echo $row['id']; ?></span>
                                         </td>
                                         <td class="text-center">
-                                            <button class="btn btn-primary btn-sm"
-                                                onclick="window.location.href  = '<?php echo $row['link']; ?>'"><i
+                                          <a class="btn btn-primary btn-sm"  href="<?php echo $row['link'];?>" target:"blank"> 
+                                           <i
                                                     class="fa-solid fa-cloud-arrow-down"></i>
                                                 Download
-                                            </button>
+                                       </a>
 
                                         </td>
                                         <td class="text-center">
@@ -235,3 +235,35 @@ if ($total_pages > 1) {
 <?php
 home("foot");
 ?>
+<style>
+    .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 5px;
+}
+
+.pagination a {
+    display: inline-block;
+    padding: 8px 12px;
+    font-size: 14px;
+    text-decoration: none;
+    color: #007bff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.pagination a:hover {
+    background-color: #f0f0f0;
+    color: #0056b3;
+}
+
+.pagination a.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #007bff;
+    font-weight: bold;
+}
+</style>

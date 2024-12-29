@@ -50,8 +50,9 @@ if (isPost()) {
         if($status == 0) {
         $activeToken = sha1(uniqid() . time());
         $linkToken = _WEBHOST.'?modules=auth&action=active&token='.$activeToken;
-        $subject = 'Xin chào '.$user.' hãy kích hoạt tài khoản để có trải nghiệm tốt nhất.';
-        $body = 'Hãy ấn vào liên kết bên dưới để kích hoạt tài khoản nhé. <br><br>';
+        $subject = 'Xác nhận kích hoạt tài khoản';
+        $body = 'Chào bạn, <br><br>';
+        $body .= 'Hãy ấn vào liên kết bên dưới để kích hoạt tài khoản nhé. <br><br>';
         $body .= 'Liên kết: <br>'.$linkToken.'<br>';
         $body .= '<br>Chúc bạn một ngày tốt lành. <br>Trân trọng cảm ơn.';
         $sucmail = sendMail($email, $subject, $body);

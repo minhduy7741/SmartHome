@@ -10,11 +10,30 @@ home("head", $data);
 if(empty($_user)){
     loadPage('?modules=auth&action=login');
 }
-$noidung = 'NAP'.$_id;
-$bank = 'BIDVBANK';
-$stk = '1170191092';
-$tentk = 'NGUYEN VAN TEO';
-$sotien = 0;
+
+
+
+
+$name   = "BIDV";
+    $stk    = "1170191092";
+    $money  = 50000;
+    $tentk  = "NGUYEN VAN TEO";
+    $nd     = "nhin cl";
+    $temp   = "print";
+    if(!$name) {
+        echo 'Bạn chưa chọn ngân hàng';
+    } else if(!$stk) {
+        echo 'Bạn chưa điền số tài khoản';
+    } else {
+        // $url = "https://api.vietqr.io/$name/$stk/$money/$nd/vietqr_net_2.jpg";
+        $url = "https://img.vietqr.io/image/$name-$stk-$temp.png?amount=$money&addInfo=$nd&accountName=$tentk";
+    }
+
+function customUrlDecode($value) {
+    $value = str_replace('%2B', ' ', $value);
+    // Nếu có các quy tắc giải mã khác, bạn có thể thêm vào đây
+    return $value;
+}
 ?>
 <section class="py-5 inner-section profile-part">
     <div class="container">
@@ -24,21 +43,24 @@ $sotien = 0;
             <div class="col-lg-4">
                 <div class="tab-pane fade active show" id="tab-10">
                     <div class="account-card">
-                        <center class="py-3">
-                            <img src="https://api.vietqr.io/<?php echo $bank;?>/<?php echo $stk;?>/<?php echo $sotien;?>/<?php echo $noidung;?>/vietqr_net_2.jpg?accountName=<?php echo $tentk;?>"
-                                width="300px">
+                        <?php if(isset($url)) { ?>
+                        <center><img src="<?=$url;?>">
+                            <div class="col-md-1" style="float:none;margin:0 auto;">
+
+                            </div>
                         </center>
+                        <?php } ?>
                         <ul class="list-group">
-                            <li class="list-group-item">Ngân hàng:<b> <?php echo $bank;?></b>
+                            <li class="list-group-item">Ngân hàng:<b> <?php echo $name;?></b>
                             </li>
                             <li class="list-group-item">Số tài khoản: <b style="color: green;"><?php echo $stk;?></b>
                                 <button type="button" class="copy-button btn-sm copy-value"
                                     data-value="<?php echo $stk;?>"><i class="fas fa-copy"></i></button>
                             </li>
                             <li class="list-group-item" style="font-size:17px;">Nội dung chuyển khoản: <b
-                                    style="color: red;"><?php echo $noidung;?></b>
+                                    style="color: red;"><?php echo $nd;?></b>
                                 <button type="button" class="copy-button btn-sm copy-value"
-                                    data-value="<?php echo $noidung;?>"><i class="fas fa-copy"></i></button>
+                                    data-value="<?php echo $nd;?>"><i class="fas fa-copy"></i></button>
                             </li>
                             <li class="list-group-item">Chủ tài khoản:<b> <?php echo $tentk;?></b>
                             </li>
